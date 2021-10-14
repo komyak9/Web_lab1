@@ -121,6 +121,7 @@ $(document).ready(function () {
                     <th>Y</th>
                     <th>R</th>
                     <th>Результат</th>
+                    <th>Четверть</th>
                     <th>Выполнение</th>
                     <th>Время</th>
                     <th>Валидность данных</th>

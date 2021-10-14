@@ -10,5 +10,6 @@ if (isset($_SESSION['results'])) {
             <td><?php echo $result[4] ?></td>
             <td><?php echo $result[5] ?></td>
             <td><?php echo $result[6] ?></td>
+            <td><?php echo $result[7] ?></td>
         </tr>
     <?php }} ?>

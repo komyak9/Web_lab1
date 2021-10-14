@@ -37,21 +37,26 @@ $x = floatval(htmlspecialchars($_GET["x"]));
 $y = floatval(htmlspecialchars($_GET["y"]));
 $r = floatval(htmlspecialchars($_GET["r"]));
 $answer = 'No';
+$quadrant = 'No';
 
 $validation = validateForm($x, $y, $r) ? "Yes" : "No";
 if (triangle($x, $y, $r) || circle($x, $y, $r) || rectangle($x, $y, $r)){
     $answer = 'Yes';
+
+    if(triangle($x, $y, $r)) $quadrant = 'First';
+    elseif (circle($x, $y, $r)) $quadrant = 'Second';
+    else $quadrant = 'Third';
 }
 
 $executionTime = number_format(microtime(true) - $start, 8, '.', '') . ' ms';
 
-$result = array($x, $y, $r, $answer, $executionTime, $currentTime, $validation);
+$result = array($x, $y, $r, $answer, $quadrant, $executionTime, $currentTime, $validation);
 
 if (!isset($_SESSION['results'])) {
     $_SESSION['results'] = array();
 }
 array_push($_SESSION['results'], $result);
 
-print_r('<tr><td>'.$x.'</td><td>'.$y.'</td><td>'.$r.'</td><td>'.$answer.'</td><td>'.$executionTime.'</td><td>'.$currentTime.'</td><td>'.$validation.'</td></tr>');
+print_r('<tr><td>'.$x.'</td><td>'.$y.'</td><td>'.$r.'</td><td>'.$answer.'</td><td>'.$quadrant.'</td><td>'.$executionTime.'</td><td>'.$currentTime.'</td><td>'.$validation.'</td></tr>');
 
 ?>
